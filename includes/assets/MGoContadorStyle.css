@@ -1,0 +1,422 @@
+/* ==================================================================
+   MGo Contador Visitas - Estilos para Admin (Responsive)
+   ================================================================== */
+
+   .cardMGoContadorVisitas{
+    max-width: 100% !important;
+   }
+/* ===== Variables de diseño (fáciles de personalizar) ===== */
+:root {
+    --mgo-blue: #2271b1;           /* WordPress admin blue */
+    --mgo-green: #46b450;          /* Engagement verde */
+    --mgo-gray-light: #f0f0f1;     /* Fondos suaves */
+    --mgo-gray-border: #c3c4c7;    /* Bordes WordPress */
+    --mgo-text: #2c3338;           /* Texto principal */
+    --mgo-text-light: #646970;     /* Texto secundario */
+    --mgo-radius: 4px;             /* Bordes redondeados */
+    --mgo-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ===== Contenedor principal ===== */
+.mg-contador-widget {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: var(--mgo-text);
+    line-height: 1.5;
+}
+
+.mg-contador-widget h3 {
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--mgo-gray-border);
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.mg-contador-widget h4 {
+    margin: 24px 0 12px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--mgo-text);
+}
+
+/* ===== Ranking: barras de progreso ===== */
+.mg-ranking-columnas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mg-ranking-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 0;
+}
+
+.mg-ranking-label {
+    font-size: 0.9em;
+    color: var(--mgo-text);
+    font-weight: 500;
+}
+
+.mg-ranking-label small {
+    color: var(--mgo-text-light);
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+}
+
+.mg-ranking-bar-bg {
+    position: relative;
+    height: 24px;
+    background: var(--mgo-gray-light);
+    border-radius: var(--mgo-radius);
+    overflow: hidden;
+    border: 1px solid var(--mgo-gray-border);
+}
+
+/* Barra total (azul, fondo) */
+.mg-ranking-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--mgo-blue);
+    opacity: 0.3;
+    transition: width 0.3s ease;
+}
+
+/* Barra engaged (verde, superpuesta) */
+.mg-ranking-bar-fill-real {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--mgo-green), #5dc465);
+    border-radius: var(--mgo-radius);
+    transition: width 0.3s ease;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+
+.mg-ranking-bar-bg span {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--mgo-green);
+    border-radius: 50%;
+    margin-right: 2px;
+}
+
+/* ===== Formulario de filtros ===== */
+.mg-contador-filtro {
+    background: #fff;
+    padding: 16px;
+    border: 1px solid var(--mgo-gray-border);
+    border-radius: var(--mgo-radius);
+    margin: 16px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.mg-contador-filtro label {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--mgo-text);
+}
+
+.mg-contador-filtro select,
+.mg-contador-filtro input[type="date"] {
+    padding: 6px 10px;
+    border: 1px solid var(--mgo-gray-border);
+    border-radius: 3px;
+    font-size: 0.95em;
+    min-height: 32px;
+    background: #fff;
+}
+
+.mg-contador-filtro select:focus,
+.mg-contador-filtro input[type="date"]:focus {
+    border-color: var(--mgo-blue);
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2);
+    outline: none;
+}
+
+.mg-contador-filtro button,
+.mg-contador-filtro .button {
+    padding: 6px 14px;
+    background: var(--mgo-blue);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.mg-contador-filtro button:hover,
+.mg-contador-filtro .button:hover {
+    background: #135e96;
+}
+
+.mg-contador-filtro .button.secondary {
+    background: #f0f0f1;
+    color: var(--mgo-text);
+    border: 1px solid var(--mgo-gray-border);
+}
+
+.mg-contador-filtro .button.secondary:hover {
+    background: #e0e0e1;
+}
+
+/* ===== Tabla de datos ===== */
+.mg-contador-widget table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.95em;
+}
+
+.mg-contador-widget table th,
+.mg-contador-widget table td {
+    padding: 10px 12px;
+    border: 1px solid var(--mgo-gray-border);
+    text-align: left;
+}
+
+.mg-contador-widget table th {
+    background: var(--mgo-gray-light);
+    font-weight: 600;
+    color: var(--mgo-text);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mg-contador-widget table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.mg-contador-widget table tr:hover {
+    background: #f0f6fc;
+}
+
+.mg-contador-widget table tr[style*="font-weight:bold"] {
+    background: #e9f5ff !important;
+    font-weight: 600 !important;
+}
+
+.mg-contador-widget table td:last-child,
+.mg-contador-widget table th:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ===== Botón imprimir ===== */
+.mg-contador-widget button[onclick*="print"] {
+    margin: 20px 0 10px 0;
+    padding: 8px 20px;
+    background: var(--mgo-green);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 0.95em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.mg-contador-widget button[onclick*="print"]:hover {
+    background: #3a9d42;
+}
+
+/* ===== Utilidades ===== */
+.ocultar-mvl {
+    display: table-cell;
+}
+
+/* ===== RESPONSIVE: Tablet (max-width: 1024px) ===== */
+@media screen and (max-width: 1024px) {
+    .mg-ranking-bar-bg::after {
+        display: none; /* Ocultar leyenda en pantallas medianas */
+    }
+    
+    .mg-contador-filtro {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .mg-contador-filtro select,
+    .mg-contador-filtro input[type="date"] {
+        flex: 1 1 45%;
+        min-width: 140px;
+    }
+}
+
+/* ===== RESPONSIVE: Móvil (max-width: 782px) ===== */
+@media screen and (max-width: 782px) {
+    /* Ajustes generales */
+    .wrap {
+        padding: 10px !important;
+    }
+    
+    .mg-contador-widget h3 {
+        font-size: 1.15em;
+        margin-bottom: 16px;
+    }
+    
+    .mg-contador-widget h4 {
+        font-size: 1em;
+        margin: 20px 0 10px 0;
+    }
+    
+    /* Ranking: más compacto */
+    .mg-ranking-label {
+        font-size: 0.85em;
+    }
+    
+    .mg-ranking-bar-bg {
+        height: 20px;
+    }
+    
+    /* Formulario: apilar elementos */
+    .mg-contador-filtro {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+    }
+    
+    .mg-contador-filtro > * {
+        width: 100%;
+    }
+    
+    .mg-contador-filtro select,
+    .mg-contador-filtro input[type="date"] {
+        flex: 1 1 100%;
+        min-width: auto;
+    }
+    
+    .mg-contador-filtro button,
+    .mg-contador-filtro .button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Tabla: scroll horizontal en móvil */
+    .mg-contador-widget table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .mg-contador-widget table th,
+    .mg-contador-widget table td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    
+    /* Ocultar columna % en móvil */
+    .ocultar-mvl {
+        display: none !important;
+    }
+    
+    /* Botón imprimir: más grande para tocar fácil */
+    .mg-contador-widget button[onclick*="print"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+    }
+}
+
+/* ===== RESPONSIVE: Móvil pequeño (max-width: 480px) ===== */
+@media screen and (max-width: 480px) {
+    .mg-ranking-label {
+        font-size: 0.8em;
+    }
+    
+    .mg-ranking-label small {
+        font-size: 0.9em;
+    }
+    
+    .mg-contador-widget table th,
+    .mg-contador-widget table td {
+        padding: 6px 8px;
+        font-size: 0.85em;
+    }
+    
+    /* Acortar títulos largos con ellipsis */
+    .mg-ranking-label {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* ===== PRINT: Estilos para imprimir / PDF ===== */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .mg-contador-widget,
+    .mg-contador-widget * {
+        visibility: visible;
+    }
+    
+    .mg-contador-widget {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 20px;
+    }
+    
+    /* Ocultar elementos interactivos al imprimir */
+    .mg-contador-filtro,
+    button[onclick*="print"] {
+        display: none !important;
+    }
+    
+    /* Asegurar que las barras se impriman con color */
+    .mg-ranking-bar-fill,
+    .mg-ranking-bar-fill-real {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    /* Tabla: bordes más definidos para papel */
+    .mg-contador-widget table {
+        border: 2px solid #000;
+    }
+    
+    .mg-contador-widget table th,
+    .mg-contador-widget table td {
+        border: 1px solid #000;
+    }
+}
+
+/* ===== Accesibilidad: foco visible ===== */
+.mg-contador-widget a:focus,
+.mg-contador-widget button:focus,
+.mg-contador-widget input:focus,
+.mg-contador-widget select:focus {
+    outline: 2px solid var(--mgo-blue);
+    outline-offset: 2px;
+}
+
+/* ===== Animaciones sutiles (solo si el sistema lo permite) ===== */
+@media (prefers-reduced-motion: no-preference) {
+    .mg-ranking-bar-fill,
+    .mg-ranking-bar-fill-real {
+        transition: width 0.4s ease-out;
+    }
+}

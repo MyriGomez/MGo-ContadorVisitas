@@ -1,0 +1,25 @@
+# WordPress core (nunca incluir)
+wp-config.php
+wp-config-sample.php
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Entornos de desarrollo
+.env
+*.local.php
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencias (composer)
+vendor/
+
+# Build files
+*.zip
+*.tar.gz
