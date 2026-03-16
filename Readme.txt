@@ -12,7 +12,7 @@ y cumplimiento GDPR.
 
 Version: 1.3.7
 Autor: Myriam Gomez
-https://mmyriamgo.es
+https://myriamgo.es
 
 
 CARACTERISTICAS PRINCIPALES
