@@ -32,12 +32,6 @@
     font-weight: 600;
 }
 
-.mg-contador-widget h4 {
-    margin: 24px 0 12px 0;
-    font-size: 1.1em;
-    font-weight: 600;
-    color: var(--mgo-text);
-}
 
 /* ===== Ranking: barras de progreso ===== */
 .mg-ranking-columnas {
@@ -45,12 +39,15 @@
     flex-direction: column;
     gap: 8px;
 }
+.mg-ranking-columnas>h4{
+    margin: 0;
+    padding: 0;
+}
 
 .mg-ranking-row {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 8px 0;
 }
 
 .mg-ranking-label {
@@ -84,6 +81,7 @@
     background: var(--mgo-blue);
     opacity: 0.3;
     transition: width 0.3s ease;
+    border-radius: var(--mgo-radius);
 }
 
 /* Barra engaged (verde, superpuesta) */
@@ -128,6 +126,10 @@
     font-weight: 500;
     font-size: 0.9em;
     color: var(--mgo-text);
+}
+
+.mg-contador-filtro input[type="date"]{
+    max-width: 40%;
 }
 
 .mg-contador-filtro select,
@@ -219,8 +221,7 @@
 
 /* ===== Botón imprimir ===== */
 .mg-contador-widget button[onclick*="print"] {
-    margin: 20px 0 10px 0;
-    padding: 8px 20px;
+    padding: 6px 14px;
     background: var(--mgo-green);
     color: #fff;
     border: none;
@@ -271,12 +272,7 @@
         font-size: 1.15em;
         margin-bottom: 16px;
     }
-    
-    .mg-contador-widget h4 {
-        font-size: 1em;
-        margin: 20px 0 10px 0;
-    }
-    
+        
     /* Ranking: más compacto */
     .mg-ranking-label {
         font-size: 0.85em;
@@ -363,6 +359,16 @@
 
 /* ===== PRINT: Estilos para imprimir / PDF ===== */
 @media print {
+    @page {
+        size: auto;
+        margin: 10mm;
+    }
+
+    html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
     body * {
         visibility: hidden;
     }
@@ -373,11 +379,12 @@
     }
     
     .mg-contador-widget {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        padding: 20px;
+        position: static !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
     }
     
     /* Ocultar elementos interactivos al imprimir */

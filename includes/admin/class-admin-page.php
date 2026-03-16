@@ -79,8 +79,6 @@ class Admin_Page {
 
         // === BLOQUE 1: Ranking (COPIA EXACTA de tu widget, sin cambios) ===
         echo '<div class="mg-contador-widget">';
-        echo '<h3>' . esc_html($titulo) . '</h3>';
-
         if (!empty($ranking)) {
             echo '<div class="mg-ranking-columnas">';
             
@@ -126,7 +124,8 @@ class Admin_Page {
         $action_url = admin_url('admin.php?page=mgo-contador'); // ← CAMBIO CLAVE
         echo '<form method="get" action="' . esc_url($action_url) . '" class="mg-contador-filtro">';
         echo '<input type="hidden" name="page" value="mgo-contador">'; // ← Para que WP sepa dónde redirigir
-
+        echo 'Desde: <input type="date" name="inicio" value="' . esc_attr($fecha_inicio) . '">';
+        echo 'Hasta: <input type="date" name="fin" value="' . esc_attr($fecha_fin) . '">';
         echo '<select name="post_id">';
         echo '<option value="">Todas</option>';
         $paginas = get_posts(['post_type' => 'page', 'post_status' => 'publish', 'numberposts' => -1]);
@@ -135,13 +134,11 @@ class Admin_Page {
             echo '<option value="'.esc_attr($p->ID).'" '.$selected.'>'.esc_html($p->post_title).'</option>';
         }
         echo '</select>';
-
-        echo 'Desde: <input type="date" name="inicio" value="' . esc_attr($fecha_inicio) . '">';
-        echo 'Hasta: <input type="date" name="fin" value="' . esc_attr($fecha_fin) . '">';
         echo ' <button type="submit">Filtrar</button>';
         
         // Botón Reiniciar ← CAMBIA get_permalink() por admin_url()
         echo ' <button type="button" onclick="window.location.href=\'' . esc_url(admin_url('admin.php?page=mgo-contador')) . '\'">Reiniciar</button>';
+        echo '<br><button onclick="window.print()">Imprimir / PDF</button>';
         echo '</form><br>';
 
         // === BLOQUE 3: Tabla detallada (COPIA EXACTA de tu widget) ===
@@ -181,7 +178,7 @@ class Admin_Page {
             echo '<p>No se encontraron visitas para los criterios seleccionados.</p>';
         }
 
-        echo '<br><button onclick="window.print()">Imprimir / PDF</button>';
+        
         echo '</div>'; // .mg-contador-widget
     }
 }
